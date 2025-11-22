@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Customer Management</h2>
+    
+    <!-- Form Tambah Customer -->
+    <div class="form-section">
+        <h3>Tambah Customer Baru</h3>
+        <form id="customerForm">
+            <input type="text" id="gender" placeholder="Gender (Male/Female)" required>
+            <input type="number" id="age" placeholder="Age" required>
+            <input type="number" id="annual_income" placeholder="Annual Income" required>
+            <input type="number" id="spending_score" placeholder="Spending Score" required>
+            <button type="submit">Tambah Customer</button>
+        </form>
+    </div>
+
+    <!-- Tabel Customer -->
+    <div class="table-section">
+        <h3>Daftar Customers</h3>
+        <table id="customerTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Annual Income</th>
+                    <th>Spending Score</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data akan diisi oleh JavaScript -->
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

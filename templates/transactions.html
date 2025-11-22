@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>🛒 Transaction Management</h2>
+    
+    <!-- Sales Summary Cards -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="stat-card">
+                <h3>Total Sales</h3>
+                <p id="totalSales">$0</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stat-card">
+                <h3>Total Transactions</h3>
+                <p id="totalTransactions">0</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stat-card">
+                <h3>Average Transaction</h3>
+                <p id="avgTransaction">$0</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Buat Transaction Baru -->
+    <div class="form-section mb-4">
+        <h3>➕ Buat Transaction Baru</h3>
+        <form id="transactionForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="customer_id" class="form-label">Customer</label>
+                    <select class="form-control" id="customer_id" required>
+                        <option value="">Pilih Customer</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="payment_method" class="form-label">Payment Method</label>
+                    <select class="form-control" id="payment_method" required>
+                        <option value="">Pilih Payment</option>
+                        <option value="cash">Cash</option>
+                        <option value="credit">Credit Card</option>
+                        <option value="e-wallet">E-Wallet</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Items Section -->
+            <div class="mt-4">
+                <h4>🛍️ Items</h4>
+                <div id="itemsContainer">
+                    <!-- Items akan ditambahkan di sini -->
+                </div>
+                <button type="button" class="btn btn-secondary mt-2" onclick="addItemRow()">
+                    ➕ Tambah Item
+                </button>
+            </div>
+
+            <!-- Total Section -->
+            <div class="mt-4 p-3 bg-light rounded">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Total Items: <span id="totalItems">0</span></h5>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <h4>Total Amount: $<span id="totalAmount">0.00</span></h4>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">
+                💳 Buat Transaction
+            </button>
+        </form>
+    </div>
+
+    <!-- Daftar Transactions -->
+    <div class="table-section">
+        <h3>📋 Daftar Transactions</h3>
+        <div class="table-responsive">
+            <table class="table table-striped" id="transactionTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Customer</th>
+                        <th>Date</th>
+                        <th>Items</th>
+                        <th>Total Amount</th>
+                        <th>Payment</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data akan diisi oleh JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal untuk Detail Transaction -->
+<div class="modal fade" id="transactionDetailModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Transaction Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="transactionDetailBody">
+                <!-- Detail akan diisi di sini -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/transactions.js') }}"></script>
+{% endblock %}
