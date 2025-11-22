@@ -38,5 +38,6 @@ pip install -r requirements.txt
 python app.py
 ```
 
-!(images/Readme.png)
+![Tampilan WAOW Shop](images/Readme.png)
+
 
